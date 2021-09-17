@@ -1,0 +1,148 @@
+body {
+  background-color: black;
+}
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 5px;
+  width: 700px;
+  height: 450px;
+  background-color: #1f1f1f;
+  border-radius: 1px;
+  box-shadow: 0 0 0.5em black;
+}
+
+.btn {
+  width: 100px;
+  height: 55px;
+  padding: 0;
+  border: none;
+  margin: 1px;
+  color: white;
+  font-size: 14pt;
+  background-color: #131313;
+}
+
+.btn:hover {
+  background-color: #1f1f1f;
+}
+
+.btn:active {
+  background-color: #494949;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.display {
+  width: 100%;
+  height: 100px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.expression-display {
+  width: 100%;
+  font-size: 10pt;
+  color: #9c9c9c;
+  text-align: right;
+}
+
+.number-display {
+  width: 100%;
+  font-size: 28pt;
+  color: white;
+  text-align: right;
+  font-weight: bold;
+}
+
+.display .number-display::after {
+  content: "|";
+  height: 80%;
+  width: 1px;
+  color: white;
+  animation: blink 0.85s linear 0.25s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.memory-operations {
+  height: 30px;
+  display: none;
+}
+
+.btn-memory {
+  height: 30px;
+  width: 70;
+}
+
+.numbers {
+  display: flex;
+  flex-direction: column;
+}
+
+.number {
+  background-color: #060606;
+  font-weight: bold;
+}
+
+.double-operations {
+  display: flex;
+  flex-direction: column;
+}
+
+.double-operation {
+  background-color: #131313;
+}
+
+.numbers {
+  display: flexbox;
+}
+
+.btn-equal {
+  background-color: #134369;
+}
+
+.btn-equal:hover {
+  background-color: #036fc5;
+}
+
+.btn-equal:active {
+  background-color: #0078d7;
+}
+
+.history {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.history-item {
+  width: 100%;
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+.history-item:hover {
+  background-color: #353535;
+}

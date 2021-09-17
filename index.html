@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Win10 Calc</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <main class="card flex-row">
+      <section class="calc">
+        <section class="display">
+          <span id="expression" class="expression-display"></span>
+          <strong id="number" class="number-display"></strong>
+        </section>
+        <section class="memory-operations">
+          <button class="btn btn-memory">MC</button>
+          <button class="btn btn-memory">MR</button>
+          <button class="btn btn-memory">M+</button>
+          <button class="btn btn-memory">M-</button>
+          <button class="btn btn-memory">MS</button>
+        </section>
+        <section class="flex-row">
+          <button class="btn single-operation">%</button>
+          <button class="btn single-operation" onclick="clearEntry()">
+            CE
+          </button>
+          <button class="btn single-operation" onclick="clearAll()">C</button>
+          <button class="btn single-operation" onclick="eraseLastInput()">
+            <img src="assets/backspace_icon_white.png" style="height: 40%" />
+          </button>
+        </section>
+        <section class="flex-row">
+          <section>
+            <section class="flex-row">
+              <button class="btn single-operation" onclick="doOperation('i')">1/x</button>
+              <button class="btn single-operation" onclick="doOperation('s')">
+                x²
+              </button>
+              <button class="btn single-operation" onclick="doOperation('r')">
+                √
+              </button>
+            </section>
+
+            <section class="numbers">
+              <section class="flex-row">
+                <button class="btn number" onclick="inputNumber('7')">7</button>
+                <button class="btn number" onclick="inputNumber('8')">8</button>
+                <button class="btn number" onclick="inputNumber('9')">9</button>
+              </section>
+              <section class="flex-row">
+                <button class="btn number" onclick="inputNumber('4')">4</button>
+                <button class="btn number" onclick="inputNumber('5')">5</button>
+                <button class="btn number" onclick="inputNumber('6')">6</button>
+              </section>
+              <section class="flex-row">
+                <button class="btn number" onclick="inputNumber('1')">1</button>
+                <button class="btn number" onclick="inputNumber('2')">2</button>
+                <button class="btn number" onclick="inputNumber('3')">3</button>
+              </section>
+              <section class="flex-row">
+                <button class="btn number" onclick="doOperation('n')">+/-</button>
+                <button class="btn number" onclick="inputNumber('0')">0</button>
+                <button class="btn number" onclick="inputComma()">.</button>
+              </section>
+            </section>
+          </section>
+          <section class="double-operations">
+            <button class="btn double-operation" onclick="doOperation('/')">
+              ÷
+            </button>
+            <button class="btn double-operation" onclick="doOperation('*')">
+              x
+            </button>
+            <button class="btn double-operation" onclick="doOperation('-')">
+              -
+            </button>
+            <button class="btn double-operation" onclick="doOperation('+')">
+              +
+            </button>
+            <button class="btn btn-equal" onclick="evaluateOperation()">
+              =
+            </button>
+          </section>
+        </section>
+      </section>
+      <section id="history" class="history flex-column"></section>
+    </main>
+  </body>
+</html>
