@@ -5,8 +5,8 @@ var expression = "";
 var display = "0";
 var operation;
 var operationsHistory = [];
-var inserting = true;
 
+var inserting = true;
 var shouldClearDisplay = false;
 var shouldClearOperation = false;
 
@@ -26,7 +26,9 @@ window.onload = function () {
 
 function clearAll() {
   expression = " ";
+  inserting = true;
   shouldClearDisplay = false;
+  shouldClearOperation = false;
   operation = undefined;
   storedNumber = undefined;
   clearEntry();
@@ -108,6 +110,7 @@ function updateHistory() {
 function selectOperation(op) {
   operation = clone(op);
   setDisplayNumber(op.result);
+  shouldClearOperation = false;
   updateDisplay();
 }
 
@@ -244,15 +247,17 @@ function doOperation(operator) {
   const newOperation = OperationFactory.get(operator);
 
   if (operation) {
-    if (newOperation instanceof SingleOperation) {
-      operation.addOperand(newOperation);
-    } else if (operation instanceof DoubleOperation) {
-      operation.addOperand(operand);
-      registerOperation(operation);
-      newOperation.addOperand(new Number(operation.result));
-      operation = newOperation;
+    if (!operation.evaluated) {
+      if (newOperation instanceof SingleOperation) {
+        operation.addOperand(newOperation);
+      } else if (operation instanceof DoubleOperation) {
+        operation.addOperand(operand);
+        registerOperation(operation);
+        newOperation.addOperand(new Number(operation.result));
+        operation = newOperation;
+      }
     } else {
-      newOperation.addOperand(operation);
+      newOperation.addOperand(new Number(operation.result));
       operation = newOperation;
     }
   } else {
@@ -266,6 +271,7 @@ function doOperation(operator) {
 
   updateDisplay();
   shouldClearDisplay = true;
+  shouldClearOperation = false;
   inserting = false;
 }
 
