@@ -4,7 +4,7 @@ const NEGATIVE = "-";
 var expression = "";
 var display = "0";
 var operation;
-var operations = [];
+var operationsHistory = [];
 var inserting = true;
 
 var shouldClearDisplay = false;
@@ -83,26 +83,32 @@ function updateDisplay() {
 function updateHistory() {
   historyOutput.innerHTML = "";
   clearHistoryNodes();
-  for (let operation of operations) {
+  for (let historyItem of operationsHistory) {
     let item = document.createElement("div");
     item.className = "history-item";
     item.onclick = (evt) => {
-      console.log(`clicked: ${operation.expression}`);
+      selectOperation(historyItem);
     };
 
     let exp = document.createElement("div");
     exp.className = "expression-display";
-    exp.innerHTML = operation.expression;
+    exp.innerHTML = historyItem.expression;
 
     let result = document.createElement("div");
     result.className = "number-display";
-    result.innerHTML = operation.result;
+    result.innerHTML = historyItem.result;
 
     item.appendChild(exp);
     item.appendChild(result);
 
     historyOutput.prepend(item);
   }
+}
+
+function selectOperation(op) {
+  operation = clone(op);
+  setDisplayNumber(op.result);
+  updateDisplay();
 }
 
 function clearHistoryNodes() {
@@ -297,7 +303,7 @@ function setDisplayNumber(result) {
 
 function registerOperation(operation) {
   operation.registered = true;
-  operations.push(clone(operation));
+  operationsHistory.push(clone(operation));
 }
 
 function clone(obj) {
@@ -589,6 +595,6 @@ class OperationFactory {
         return new Negate();
     }
 
-    throw new Error(`Operation not found: ${operator}`);
+    throw new Error(`Operation not found: ${JSON.toString(operator)}`);
   }
 }
