@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Win10 Calc</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="./assets/styles/style.css" />
-    <script src="./js/main.js"></script>
+    <title>Win 10 Calc</title>
   </head>
   <body>
     <main class="card flex-row">
@@ -32,7 +33,9 @@
         <section class="flex-row">
           <section>
             <section class="flex-row">
-              <button class="btn single-operation" onclick="doOperation('i')">1/x</button>
+              <button class="btn single-operation" onclick="doOperation('i')">
+                1/x
+              </button>
               <button class="btn single-operation" onclick="doOperation('s')">
                 x²
               </button>
@@ -58,7 +61,9 @@
                 <button class="btn number" onclick="inputNumber('3')">3</button>
               </section>
               <section class="flex-row">
-                <button class="btn number" onclick="doOperation('n')">+/-</button>
+                <button class="btn number" onclick="doOperation('n')">
+                  +/-
+                </button>
                 <button class="btn number" onclick="inputNumber('0')">0</button>
                 <button class="btn number" onclick="inputComma()">.</button>
               </section>
@@ -85,5 +90,24 @@
       </section>
       <section id="history" class="history flex-column"></section>
     </main>
+
+    <script src="./js/model/Operand.js"></script>
+    <script src="./js/model/SingleOperation.js"></script>
+    <script src="./js/model/DoubleOperation.js"></script>
+    <script src="./js/model/Number.js"></script>
+
+    <script src="./js/model/operation/Division.js"></script>
+    <script src="./js/model/operation/Inverse.js"></script>
+    <script src="./js/model/operation/Multiplication.js"></script>
+    <script src="./js/model/operation/Negate.js"></script>
+    <script src="./js/model/operation/SquareRoot.js"></script>
+    <script src="./js/model/operation/Square.js"></script>
+    <script src="./js/model/operation/Subtraction.js"></script>
+    <script src="./js/model/operation/Sum.js"></script>
+    <script src="./js/model/operation/OperationFactory.js"></script>
+
+    <script src="./js/service/CalculatorService.js"></script>
+
+    <script src="./js/main.js"></script>
   </body>
 </html>
